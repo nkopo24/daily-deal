@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דיל היום – Daily Deals</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* רקע עם בועות צבעוניות */
+  body, html {
+    margin:0; padding:0;
+    font-family: Arial,sans-serif;
+    overflow-x: hidden;
+    color:#fff;
+    height:100%;
+  }
+  body {
+    background: linear-gradient(135deg,#0d47a1,#1e88e5);
+    position: relative;
+  }
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 10s infinite;
+  }
+  @keyframes float {
+    0% {transform: translateY(100vh) scale(0);}
+    50% {opacity:1;}
+    100% {transform: translateY(-100px) scale(1);}
+  }
+
+  header {
+    padding:40px 20px;
+    background: rgba(0,0,0,0.3);
+    text-align:center;
+  }
+  header h1 {
+    font-size:2.5em;
+    margin-bottom:10px;
+  }
+  header h2 {
+    font-size:1.5em;
+    margin-bottom:20px;
+  }
+  header p {
+    font-size:1.2em;
+    margin-bottom:20px;
+  }
+
+  .benefits {
+    text-align:right;
+    display:inline-block;
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:30px;
+  }
+  .benefits li {
+    margin:10px 0;
+    list-style:none;
+  }
+  .benefits i {color:#ffcc00; margin-left:8px;}
+
+  .cta-buttons {
+    margin:20px 0;
+  }
+  .cta-buttons a {
+    display:inline-block;
+    margin:10px;
+    padding:15px 30px;
+    background:#1976d2;
+    color:white;
+    font-size:1.2em;
+    border-radius:10px;
+    text-decoration:none;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-buttons a i {margin-left:8px;}
+  .cta-buttons a:hover {
+    background:#0d47a1;
+    transform: scale(1.1);
+  }
+
+  /* גלריית דילים */
+  .deals-gallery {
+    max-width:800px;
+    margin:50px auto;
+    text-align:center;
+    position:relative;
+  }
+  .deals-gallery img {
+    width:200px;
+    border-radius:15px;
+  }
+  .deal-text {
+    margin-top:10px;
+    font-size:1em;
+    min-height:40px;
+  }
+
+  .banner {
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#1565c0;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    font-size:1.1em;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    animation:slideUp 0.8s ease forwards;
+  }
+  .banner i {margin-left:8px; color:#ffcc00;}
+  @keyframes slideUp {from{transform:translateY(100px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+  footer {
+    background:rgba(0,0,0,0.3);
+    padding:20px;
+    text-align:center;
+    margin-top:40px;
+    font-size:0.9em;
+  }
+</style>
+</head>
+<body>
+
+<!-- בועות צבעוניות -->
+<script>
+  for(let i=0;i<30;i++){
+    let bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    bubble.style.width = bubble.style.height = Math.random()*40 + 20 + 'px';
+    bubble.style.left = Math.random()*100 + 'vw';
+    bubble.style.background = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.3)`;
+    bubble.style.animationDuration = 5 + Math.random()*10 + 's';
+    document.body.appendChild(bubble);
+  }
+</script>
+
+<header>
+  <h1>🎁 דיל היום – הצטרפו עכשיו ותתחילו לחסוך!</h1>
+  <h2>מוצרים נבחרים מאלי אקספרס במיוחד בשבילכם</h2>
+  <p>כל יום אני בודק את המוצרים הכי איכותיים ומשתלמים – אתם רק מצטרפים ואני דואג לכל השאר.</p>
+
+  <ul class="benefits">
+    <li><i class="fa-solid fa-sack-dollar"></i> חיסכון אמיתי – קופונים בלעדיים והנחות יומיות</li>
+    <li><i class="fa-solid fa-box-open"></i> מבחר ענק – אופנה, טכנולוגיה, ספורט, בית ועוד</li>
+    <li><i class="fa-solid fa-star"></i> מקצועיות – כל מוצר נבדק בקפידה במיוחד בשבילכם</li>
+    <li><i class="fa-solid fa-hand-holding-heart"></i> נוחות – אתם רק מצטרפים, את השאר אני דואג</li>
+  </ul>
+
+  <div class="cta-buttons">
+    <a href="https://chat.whatsapp.com/B73PuN3ihMQ9Kk9TKiX0b5?mode=ems_copy_t" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://t.me/+MprKtLuYMthkMWU0" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+  </div>
+</header>
+
+<!-- דילים -->
+<section class="deals-gallery">
+  <img id="deal-image" src="images/1.jpg" alt="דיל יומי">
+  <div class="deal-text" id="deal-text">דיל יומי איכותי – נבחר במיוחד בשבילכם.</div>
+</section>
+
+<div class="banner" id="banner"><i class="fa-solid fa-clock"></i> 🔥 אל תפספס – הצטרף עכשיו ותתחיל לחסוך!</div>
+
+<footer>
+  📞 052-6592191 | ✉️ n.kopo24@gmail.com <br>
+  🔒 הצטרפות חינמית וללא התחייבות | ⭐ מאות לקוחות מרוצים <br>
+  © 2025 כל הזכויות שמורות
+</footer>
+
+<script>
+  // באנר קופץ אחרי 5 שניות
+  setTimeout(()=>{document.getElementById('banner').style.display='block';},5000);
+
+  // דילים מתחלפים אוטומטית
+  const deals = [
+    {img:'images/1.jpg', text:'דיל יומי איכותי – נבחר במיוחד בשבילכם.'},
+    {img:'images/2.jpg', text:'מוצר איכותי מבית אלי אקספרס – כל יום משהו חדש!'},
+    {img:'images/3.jpg', text:'בחירה קפדנית של המוצרים הכי משתלמים.'},
+    {img:'images/4.jpg', text:'כל יום דיל חדש – אל תחמיצו!'},
+    {img:'images/5.jpg', text:'דיל מהשורה הראשונה – הזדמנות לכולם!'},
+    {img:'images/6.jpg', text:'אל תפספסו את הדיל של היום!'}
+  ];
+  let current=0;
+  setInterval(()=>{
+    current=(current+1)%deals.length;
+    document.getElementById('deal-image').src=deals[current].img;
+    document.getElementById('deal-text').innerText=deals[current].text;
+  },4000);
+</script>
+
+</body>
+</html>
